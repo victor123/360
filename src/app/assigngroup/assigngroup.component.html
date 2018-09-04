@@ -1,0 +1,126 @@
+
+<h3 class="headertitle">User &amp; Group</h3>
+
+<div class="box adj-box box-primary">
+  <div class="box-header with-border">
+            	<div class="row">
+              <div class="col-md-3">
+              <select class="form-control">
+                                        <option>Select Module</option>
+                                        <option>Asset</option>
+                                        <option>Staff</option>
+                                        <option>Contract</option>
+                                    </select>
+              </div>
+              <div class="col-md-3">
+                  <select class="form-control">
+                                        <option>Select Group</option>
+                                        <option>FMD-Operation</option>
+                                        <option>FMD-TS</option>
+                                        <option>Finance</option>
+                                    </select>
+              </div>
+              <div class="col-md-3">
+              <select class="form-control">
+                                        <option>Select Role</option>
+                                        <option>Administrator</option>
+                                        <option>Officer in Charge</option>
+                                        <option>Read only</option>
+                                        <option>User</option>
+                                    </select>
+              </div>
+              	</div>
+            </div>
+    <div class="box-header with-border">
+        <h3 class="box-title">Select User</h3>
+
+    </div>
+
+     <div class="box-table-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="dataTables_length">
+             Show
+            <select [(ngModel)]="limit" class="form-control input-sm">
+          <option *ngFor="let size of sizes" [value]= "size" >{{size}}</option>
+         </select> entries </div>
+        </div>
+
+
+        <div class="col-sm-6">
+          <div id="userdata_filter" class="dataTables_filter">
+            <label>Search:
+            <input type="search"
+            class="form-control input-sm"
+            [(ngModel)]="term"
+            placeholder="Search here">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <table class="sorticon table datatable dataTable no-footer">
+        <thead>
+            <tr>
+            <th>
+            
+            <input type="checkbox" 
+            name="allselect"  value="allselect"
+            [(ngModel)]="selectedAll" 
+            (click)="selectAll($event)">
+
+            </th>
+            <th [class.active]="order ==='userId'" (click)="setOrder('userId')"> Login ID
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='emailId'" (click)="setOrder('emailId')"> Email Address
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='userName'" (click)="setOrder('userName')"> User Name
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='mobileNumber'" (click)="setOrder('mobileNumber')"> Mobile Number
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='remark'" (click)="setOrder('remark')"> Remarks
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            </tr>
+         </thead>
+       <tbody>
+
+          <tr *ngFor="let user of UserList |
+                      filterBy:term |
+                      orderBy:order:reverse:'case-insensitive'|
+          paginate:{
+                     itemsPerPage:limit, 
+                     currentPage:p,
+                     totalItems:total} ; let i = index">
+            <td> 
+            <input type="checkbox"
+            [checked]="user.selected" 
+            (change)="user.selected = !(user.selected)"/>
+            </td>
+            <td> {{user.userId}}</td>
+            <td> {{user.emailId}}</td>
+            <td> {{user.userName}}</td>
+            <td> {{user.mobileNumber}}</td>
+            <td> {{user.remark}}</td>
+
+           </tr>
+            <tr *ngIf="(UserList | filterBy:term).length == 0">
+            <td colspan="12">
+             No data
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  <div class="btn-footer">
+            <button type="button" class="btn btn-grey pull-left" (click)="goBack()">Cancel</button>
+            <button type="button" class="btn btn-submit pull-right" (click)="addUserList()">Submit</button>
+  </div>
+  </div>

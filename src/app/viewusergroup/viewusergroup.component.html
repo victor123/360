@@ -1,0 +1,88 @@
+<div class="box box-primary" *ngIf="userGroupView">
+            <div class="box-header with-border">
+              <h3 class="box-title">User Group View</h3>
+            </div>
+            <form role="form">
+            <div class="box-body">
+            
+                <div class="row">
+                	<div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Reminder Module</label>
+                            <p class="form-view">{{userGroupView.reminderModule}}</p>
+                            
+                		</div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Group Name</label>
+                            <p class="form-view">{{userGroupView.groupname}}</p>
+                		</div>
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1"> Role </label>
+                            <p class="form-view">{{userGroupView.reminderModule}}</p>
+                		</div>
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Group Active</label>
+                            <p class="form-view"> {{userGroupView.active}}</p>
+                		</div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                    	<div class="form-group">
+                        	<label for="exampleInputEmail1">Description</label>
+                            <p class="form-view">This is a group description, this group is for managing equipment contract for FMD department.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+                    </div>
+                </div>
+      <div class="row">
+                	<div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Created By</label>
+                            <p class="form-view">test 1</p>
+                		</div>
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Created Date</label>
+                            <p class="form-view">11/09/2018</p>
+                		</div>
+                    </div>
+                    <div class="col-md-4">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Last Modified	</label>
+                            <p class="form-view">6958</p>
+                		</div>
+                    </div>
+                </div>
+           <div class="row">
+                	<div class="col-md-8">
+                    	<div class="form-group">
+                  			<label for="exampleInputEmail1">Access</label>
+                            <p class="form-view">View / Create / Update / Verify</p>
+                		</div>
+                    </div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                    	<div class="form-group">
+                        	<label for="exampleInputEmail1">Remarks</label>
+                            <p class="form-view">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+           <div class="btn-footer">
+            <button type="button" class="btn btn-submit pull-right" (click)="closeView()" > Close </button>
+            </div>
+            </form>
+            <!-- /.box-body -->
+          </div>

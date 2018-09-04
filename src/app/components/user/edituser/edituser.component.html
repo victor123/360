@@ -1,0 +1,183 @@
+<div class="modal-backdrop ">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content form-ajust">
+      <div class="modal-header">
+        <button type="button" class="close" 
+        (click)="editClose($event)">&times;</button>
+        <h4 class="modal-title"> Edit User</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm" (ngSubmit)="editUpdateUser($event,editForm.value)" >
+         
+        <div class="box-body">
+          
+                  <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+               <label for="UserLogin">Edit User </label>
+                <div class="input-group">
+                  <input  type="text" formControlName="userId" readonly class="validate filter-input form-control" 
+                  [(ngModel)]="editUser.userId">
+
+                  <span class="input-group-addon"><i class="fa fa-download"></i></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+
+                <label for="UserLogin">Email </label>
+             <!--<input type="text" class="form-control" placeholder="Login ID" name="loginID" formControlName="loginID" [(ngModel)]="term">-->
+                  <input  type="text"  
+                   formControlName="emailId"  class="form-control"
+                   name="emailId"
+                   [(ngModel)]="editUser.emailId">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+
+                <label for="UserLogin">User Name </label>
+            
+                  <!--<input type="text" class="form-control" placeholder="Login ID" name="loginID" formControlName="loginID" [(ngModel)]="term">-->
+                  <input  type="text"  
+                  formControlName="userName"
+                  name="username" 
+                   class="form-control" 
+                   [(ngModel)]="editUser.userName">
+              </div>
+            </div>
+          </div>
+
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <label for="UserName">Phone Number </label>
+                <input type="text" class="form-control"
+                formControlName="mobileNumber"  
+                 name="mobileNumber"
+                  placeholder="User Name" 
+                 [(ngModel)]="editUser.mobileNumber">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group checkboxForm">
+
+                <label for="UserAdmin">User Admin</label>
+                <input type="checkbox"
+                 formControlName="userAdmin" 
+                name="userAdmin"   
+                [(ngModel)]="editUser.userAdmin">
+
+
+              </div>
+            </div>
+
+
+             <div class="col-md-4">
+              <div class="form-group checkboxForm">
+
+                <label for="UserAdmin">Group Admin</label>
+                <input type="checkbox"
+                 name="GroupAdmin"
+                 formControlName="groupAdmin" 
+                  [(ngModel)]="editUser.groupAdmin">
+
+
+              </div>
+            </div>
+
+                           
+          </div>
+
+               <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="Remarks">Remarks</label>
+                <textarea class="form-control" name="remark" 
+                 placeholder="Remarks" autocomplete="off"
+                   formControlName="remark"  
+                  [(ngModel)]="editUser.remark"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+    <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Created By</label>
+                <input type="text"   class="form-control" 
+                name="CreatedBy" autocomplete="off" 
+                formControlName="createdById"
+                name="createById"
+                [(ngModel)]="editUser.createdById">
+              </div>
+            </div>
+          </div>
+          
+              <div class="row">
+           <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Created Date</label>
+                <input type="text"   class="form-control"  readonly
+                name="CreatedDate" autocomplete="off" 
+                 formControlName="createdAt"
+                [(ngModel)]="editUser.createdAt">
+              </div>
+            </div>
+          </div>
+     
+        <div class="row">
+           <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Last Modified</label>
+                <input type="text"   class="form-control" readonly
+                name="CreatedDate" autocomplete="off" 
+                 formControlName="lastModifiedById"
+                [(ngModel)]="editUser.lastModifiedById">
+              </div>
+            </div>
+          </div>
+
+               <div class="row">
+           <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Last Modified Date</label>
+                <input type="text"   class="form-control" readonly
+                name="lastModifiedAt" autocomplete="off" 
+                formControlName="lastModifiedAt"
+                [(ngModel)]="editUser.lastModifiedAt">
+              </div>
+            </div>
+          </div>
+
+      
+         
+         
+          </div>
+              <div class="modal-footer">
+                  <button  type="button" class="btn btn-grey pull-left" (click)="editClose($event)" >Cancel</button>
+                  <button class="btn btn-submit pull-right" type="submit"  [disabled]="!editForm.valid">Update user </button>
+        
+         </div>   
+      </form>
+   
+       
+      </div>
+    </div>
+</div>
+  </div>

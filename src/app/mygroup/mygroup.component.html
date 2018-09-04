@@ -1,0 +1,124 @@
+
+<div class="box box-primary">
+     <div class="box-header with-border">
+      <h3 class="box-title">My Group </h3>
+      
+      <div class="box-btn-group pull-right">
+                           <button type="button" (click)="assignRole()" class="btn btn-add">Assign Role</button>
+                          </div>
+
+     </div>
+    <div class="box-table-body">
+
+      <div class="filter-box">
+                            	<div class="col-md-1"><span><i class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
+                                <div class="col-md-11">
+                                <select class="form-control">
+                                    <option value="null" disabled="true" [selected]="true" >Select Module</option>
+                                      <option  *ngFor="let model of filterModel" value="{{model.model}}"> {{model.model}}</option>
+                                     </select>
+                                      <select class="form-control" >
+                                        <option value="null" disabled="true" [selected]="true">Select Group</option>
+                                    <option *ngFor="let group of filterGroup" value="{{group.model}}"> {{group.group}}</option>
+ 
+                                    </select>
+                                    <div class="content-area ">
+                                      Group description - Lorem ipsum
+                                    </div>
+                                   
+                                    <div class="pull-right ">
+                                   <select class="form-control"  >
+                                        <option value="null" disabled="true" [selected]="true">Select Role</option>
+                                   <option *ngFor="let role of filterRole" value="{{role.model}}"> {{role.role}}</option>
+                                    </select>
+                                  </div>
+                                 
+                                </div>
+                            </div>
+                         
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="dataTables_length">
+             Show
+            <select [(ngModel)]="limit" class="form-control input-sm">
+          <option *ngFor="let size of sizess" [value]= "size" >{{size}}</option>
+         </select> entries </div>
+        </div>
+
+
+        <div class="col-sm-6">
+          <div id="userdata_filter" class="dataTables_filter">
+            <label>Search:
+            <input type="search"
+            class="form-control input-sm"
+            [(ngModel)]="term"
+            placeholder="Search here">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--<div *ngIf="selectedValue== 'Asset'">-->
+      <div>
+    <div class="tab-content">
+      
+      <table class="sorticon table datatable dataTable no-footer">
+        <thead>
+          <tr>
+            <th [class.active]="order ==='userid'" (click)="setOrder('userid')"> User ID
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='username'" (click)="setOrder('username')"> User Name
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='email'" (click)="setOrder('email')"> Email
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='module'" (click)="setOrder('module')"> Module
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='usergroup'" (click)="setOrder('usergroup')"> User Group
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+             <th [class.active]="order ==='role'" (click)="setOrder('role')"> Role
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th> Action </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let group of mygroup | filterBy:term |
+                 
+                  orderBy:order:reverse:'case-insensitive'|
+                  
+      paginate:{
+                itemsPerPage:limit, 
+                currentPage:p,
+                totalItems:total} ; let i = index">
+
+            <td> {{group.userid}}</td>
+            <td> {{group.username}}</td>
+            <td> {{group.email}}</td>
+            <td> {{group.module}}</td>
+            <td> {{group.usergroup}} </td>
+             <td> {{group.role}} </td>
+              <td class="action-btn">
+                <a (click)="deleteGroup(group.userid)"><i class="fa fa-trash-o"></i></a> 
+                </td>
+            
+
+          </tr>
+          <tr *ngIf="( mygroup | filterBy:term).length == 0">
+            <td colspan="12">
+              No data
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    </div>
+  </div>
+

@@ -1,0 +1,184 @@
+<div class="box adj-box box-primary">
+
+    <div class="box-header with-border">
+        <h3 class="box-title">Edit User</h3>
+
+        <div class="box-btn-group pull-right">
+            <p><span class="text-mandatory">*</span> Mandatory field</p>
+        </div>
+    </div>
+
+    <form  [formGroup]= "form" (ngSubmit)="save()" novalidate>
+        <div class="addgroup-box-body">
+
+            <div class="add-group-left">
+
+                <div class="form-group">
+                    <div class="form-group">
+                    <label for="ReminderModule">Reminder Module <span class="mandatory">*</span></label>
+                    <!--<select class="form-control" formControlName="reminderModule">
+                        	<option value =""> -Select Reminder Module-</option>
+                            <option [value]="'Assets'" >Assets</option>
+                            <option [value]="'Staff'" >Staff</option>
+                            <option [value]="'Contract'" >Contract</option>
+                        </select>-->
+<input type="text" class="form-control" 
+ formControlName="reminderModule" 
+ [(ngModel)]="editUserGroup.reminderModule"
+ placeholder="Enter Group Name">
+
+                        <!--<p class="alert alert-danger" *ngIf="form.controls['reminderModule'].hasError('required') && form.controls['reminderModule'].dirty">
+                                 Reminder Module is required
+                                </p>-->
+                    
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="GroupName">Group Name <span class="mandatory">*</span></label>
+                    <input type="text" class="form-control" 
+                    formControlName="GroupName"
+                     [(ngModel)]="editUserGroup.GroupName"
+                    placeholder="Enter Group Name">
+                             <!--<p class="alert alert-danger" *ngIf="form.controls['GroupName'].hasError('maxlength')">
+                                Group name  cannot exceed 25 characters.
+                                 </p>
+                                <p class="alert alert-danger" *ngIf="form.controls['GroupName'].hasError('required') && form.controls['GroupName'].dirty">
+                                 User name is required
+                                </p>-->
+                
+                </div>
+                <div class="form-group">
+                    <label for="GroupDescription">Group Description <span class="mandatory">*</span></label>
+                    <textarea class="form-control" 
+                    formControlName="GroupDescription" 
+                    
+                     [(ngModel)]="editUserGroup.GroupDescription"
+                    placeholder="Description"></textarea>
+               
+                  <!--<p class="alert alert-danger" *ngIf="form.controls['GroupDescription'].hasError('minlength')">
+                               Group name must be at least 20 characters long.
+                                </p>
+                                <p class="alert alert-danger" *ngIf="form.controls['GroupDescription'].hasError('maxlength')">
+                                Group name  cannot exceed 300 characters.
+                                 </p>
+                                <p class="alert alert-danger" *ngIf="form.controls['GroupDescription'].hasError('required') && form.controls['GroupDescription'].dirty">
+                                 Group name is required
+                                </p>-->
+               
+                </div>
+                <div class="form-group">
+                    <label for="Active">Active</label>
+                    <select class="form-control" 
+                    [(ngModel)]="editUserGroup.GroupActive"
+                     formControlName="GroupActive">
+                        <option value="null" disabled="true" [selected]="true"> - Select - </option>
+                        	<option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                </div>
+                
+
+            </div>
+
+
+
+      
+          <div class="addgroup-right">
+              <div class="full-width">
+                   <h5 class="box-title">  Role Configuration </h5>
+                    <div class="formField">
+                        <ul class="addfield">
+                          <li> Role/Access </li>
+                          <li> View</li>
+                           <li>Craete </li>
+                           <li> Update </li>
+                             <li> Delete</li>
+                                    <li> Verify </li>
+                                    <li> Notification TO </li>
+                                    <li> Notification CC </li>
+                                    <li> Action </li>
+                              </ul>
+                                  <ul class="addfield fieldHeight">
+                                    <li> Group Administor </li>
+                                    <li><input type="checkbox" checked formControlName="AdminView"> </li>
+                                    <li><input type="checkbox" checked  formControlName="AdminCreate"> </li>
+                                    <li><input type="checkbox" checked  formControlName="AdminUpdate"> </li>
+                                    <li><input type="checkbox" checked  formControlName="AdminDelete"> </li>
+                                    <li><input type="checkbox" checked  formControlName="AdminVerify"> </li>
+
+                                    <li><input type="checkbox" checked  formControlName = "AdminNotificationTo"> </li>
+                                    <li> </li>
+                                    <li> </li>
+                                </ul>
+                             
+                                <ul class="addfield fieldHeight" 
+                                 *ngFor="let field of roleConfigration.controls; let i = index"   formArrayName = "roleConfigration">
+                                   <div class="" [formGroupName]="i">
+                                    <li>
+                                        <input type="text" class="form-control" formControlName="EnterGroupName" name="EnterGroupName" placeholder="Enter Group Name">
+                                      
+                                    </li>
+                                    <li><input type="checkbox" formControlName="viewCheck"  name="intSelected"></li>
+                                    <li><input type="checkbox" formControlName="createCheck" name="intSelected" > </li>
+                                    <li><input type="checkbox"  formControlName="updateCheck" name="intSelected" > </li>
+                                    <li><input type="checkbox"  formControlName="deleteCheck" name="intSelected" > </li>
+                                    <li><input type="checkbox" formControlName="verifyCheck" name="intSelected" > </li>
+                                    <li><input type="checkbox"  formControlName="notificationCheck" name="intSelected" > </li>
+                                    <li><input type="checkbox" formControlName="notificationCC" name="intSelected" > </li>
+                                    <li class="action-btn "><a (click)="deleteFieldvalue(i)"><i class="fa fa-trash-o"></i></a></li>
+                                   </div>
+                                </ul>
+                               
+                           
+                    </div>
+           
+                <!--<div class="form-group">
+                    <button type="button" class="btn btn-add mar-top20"  (click)="addFieldValue(field)">Add</button>
+                </div>-->
+                     </div>
+
+             <!--<div class="full-width">   
+            <h5 class="box-title">  Group Administor </h5>
+            <table class="table adj-table table-bordered">
+                <thead>
+                    <tr>
+                        <th> No </th>
+                        <th> Login ID </th>
+                        <th> User Name</th>
+                        <th> Email </th>
+                         <th> Phone Number </th>
+                        <th> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let useritem of sendUserList; let i = index">
+                        <td> {{i + 1}} </td>
+                        <td> {{useritem.userId}}</td>
+                        <td> {{useritem.userName}}</td>
+                        <td> {{useritem.emailId}}
+                        <td> {{useritem.mobileNumber}}</td>
+                        <td> <a (click)="useritemRemove(userItem, i)" > <i class="fa fa-trash-o"></i> </a></td>
+
+                    </tr>
+                </tbody>
+
+
+            </table>
+                        <button class="btn btn-add" type="button" (click)="viewAddGroup()">Add</button>
+
+          </div>-->
+
+          </div>
+
+            <!--<div *ngIf="userGroup">
+                <app-addgroupComponent  (sendUserList)="sendUserdata($event)" (closeUser)="closeWindow($event)"> </app-addgroupComponent>
+            </div>-->
+
+            <div class="btn-footer">
+                <button type="button" class="btn btn-grey pull-left" (click)="goBack()">Cancel</button>
+                <button type="submit" [disabled]="!form.valid" class="btn btn-submit pull-right">Submit</button>
+            </div>
+        </div>
+
+    </form>
+</div>

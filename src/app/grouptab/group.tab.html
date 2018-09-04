@@ -1,0 +1,27 @@
+   
+   <h3 class="headertitle">User &amp; Group</h3>
+<div class="middle-container ">
+   <div class=" box-header with-border nav-tabs-header">
+      <ul class="nav nav-tabs">
+        <li [class.active]="viewMode =='user'" > <a  (click)="viewMode='user'" > Users</a></li>
+        <li [class.active]="viewMode == 'group'"> <a (click)="viewMode='group'"> Groups</a></li>
+        <li [class.active]="viewMode == 'mygroup'"> <a (click)="viewMode ='mygroup'"> My Group</a></li>
+      </ul>
+    </div>
+   
+   
+ <div [ngSwitch] ="viewMode"> 
+<div *ngSwitchCase="'user'">
+  <app-user> </app-user> 
+  </div>
+  <div *ngSwitchCase = "'group'">
+  <app-usergroup  (GroupDetailData)="groupdetaildata($event)"> </app-usergroup>
+  
+</div>
+ <div *ngSwitchCase = "'mygroup'">
+ <div><app-mygroup> </app-mygroup> </div>
+ </div>
+</div>
+
+
+</div>

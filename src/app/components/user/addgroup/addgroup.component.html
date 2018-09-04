@@ -1,0 +1,112 @@
+<div class="modal-backdrop " style="display:block">
+                              <div class="modal-dialog">
+                            
+                                <!-- Modal content-->
+                                <div class="modal-content form-ajust">
+                                  <div class="modal-header">
+                                    <button type="button" class="close" (click)="closeModel()" >&times;</button>
+                                    <h4 class="modal-title">Add User</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                     <div class="box-table-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="dataTables_length">
+             Show
+            <select [(ngModel)]="limit" class="form-control input-sm">
+          <option *ngFor="let size of sizes" [value]= "size" >{{size}}</option>
+         </select> entries </div>
+        </div>
+
+
+        <div class="col-sm-6">
+          <div id="userdata_filter" class="dataTables_filter">
+            <label>Search:
+            <input type="search"
+            class="form-control input-sm"
+            [(ngModel)]="term"
+            placeholder="Search here">
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+                                  <div class="tab-content">
+      <table class="sorticon table datatable dataTable no-footer">
+        <thead>
+          <tr>
+            <th> 
+              <input type="checkbox" 
+              name="allselect"  value="allselect"
+              [(ngModel)]="selectedAll" 
+              (click)="selectAll($event)"> 
+               <!--<input type="checkbox" [(ngModel)]="selectedAll" (change)="selectAll()"> -->
+              </th>
+              <th>
+              No
+            </th>
+            <th [class.active]="order ==='loginID'" (click)="setOrder('loginID')"> Login ID
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='username'" (click)="setOrder('username')"> User Name
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='email'" (click)="setOrder('email')"> Email Address
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='mobile'" (click)="setOrder('mobile')"> Mobile Number
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            <th [class.active]="order ==='remark'" (click)="setOrder('remark')"> Remarks
+              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let user of UserList |
+                  filterBy:term |
+                  orderBy:order:reverse:'case-insensitive'|
+                  
+      paginate:{
+                itemsPerPage:limit, 
+                currentPage:p,
+                totalItems:total} ; let i = index">
+            <!--<td> <input type="checkbox" [(ngModel)]="user.selected" (change)="selectItem($event,user, i)"> </td>-->
+            
+             <td>
+              <input type="checkbox"
+              [checked]="user.selected" 
+              (change)="user.selected = !(user.selected)"/>
+             </td>
+             <td> {{i}}</td>
+            <td> {{user.userId}}</td>
+            <td> {{user.emailId}}</td>
+            <td> {{user.userName}}</td>
+            <td> {{user.mobileNumber}}</td>
+            <td> {{user.remark}}</td>
+
+           </tr>
+          <tr *ngIf="(UserList | filterBy:term).length == 0">
+            <td colspan="12">
+              No data
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      
+    </div>
+
+    <div class="btn-footer">
+            	<button type="button" class="btn btn-grey pull-left" (click)="closeModel()">Cancel</button>
+                <button type="button" class="btn btn-submit pull-right" (click)="addUserList()">Submit</button>
+            </div>
+                                  </div>
+
+
+                                </div>
+                            
+                              </div>
+                            </div>

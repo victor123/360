@@ -1,0 +1,138 @@
+<div class="modal-backdrop ">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content form-ajust">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="closeDiv()">&times;</button>
+        <h4 class="modal-title"> View User</h4>
+      </div>
+      <div class="modal-body">
+        <div class="box-body">
+                  <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+               <label for="UserLogin">User login ID </label>
+                <div class="input-group">
+                  <input  type="text" readonly class="validate filter-input form-control" [(ngModel)]=childData.userId>
+
+                  <span class="input-group-addon"><i class="fa fa-download"></i></span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+
+                <label for="UserLogin">Email </label>
+             <!--<input type="text" class="form-control" placeholder="Login ID" name="loginID" formControlName="loginID" [(ngModel)]="term">-->
+                  <input  type="text" readonly  class="form-control" [(ngModel)]=childData.emailId>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+
+                <label for="UserLogin">User Name </label>
+            
+               
+                  <input  type="text" readonly  name="userName" class="form-control" [(ngModel)]=childData.userName>
+              </div>
+            </div>
+          </div>
+
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+
+                <label for="UserName">Phone Number </label>
+                <input type="text" class="form-control" readonly name="mobileNumber" placeholder="User Name" [(ngModel)]="childData.mobileNumber">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+
+                <label for="UserAdmin">User Admin</label>
+                <input type="text" class="form-control" readonly name="email"   [(ngModel)]="childData.userAdmin">
+
+
+              </div>
+            </div>
+
+
+             <div class="col-md-6">
+              <div class="form-group">
+
+                <label for="UserAdmin">Group Admin</label>
+                <input type="text" class="form-control" readonly name="GroupAdmin" [(ngModel)]="childData.groupAdmin">
+
+
+              </div>
+            </div>
+
+              
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="Active">Active</label>
+                 
+                <input type="text" [(ngModel)]="childData.active "  readonly class="form-control" name="Active">
+
+              </div>
+            </div>
+         
+        
+          </div>
+
+               <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="Remarks">Remarks</label>
+                <textarea class="form-control" name="remark" readonly placeholder="Remarks" autocomplete="off" [(ngModel)]="childData.remark"></textarea>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+    <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Created By</label>
+                <input type="text"  readonly class="form-control" name="CreatedBy" autocomplete="off" [(ngModel)]="childData.createdById">
+              </div>
+            </div>
+          </div>
+          
+              <div class="row">
+           <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Created Date</label>
+                <input type="text"  readonly class="form-control" name="CreatedDate" autocomplete="off" [(ngModel)]="childData.createdById">
+              </div>
+            </div>
+          </div>
+     
+          <div class="row">
+    <div class="col-md-12">
+              <div class="form-group">
+                <label for="CreatedBy">Created By</label>
+                <input type="text"  readonly class="form-control" name="CreatedBy" autocomplete="off" [(ngModel)]="childData.createdById">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

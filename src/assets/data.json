@@ -1,0 +1,48 @@
+[
+{
+    "userId":5265,
+    "adUserId":"string",
+    "emailId": "user1@gmail.com",
+    "userName":"user1",
+    "mobileNumber":"6528962564",
+    "remark":"remark 1",
+    "active":true,
+    "userAdmin":false,
+    "groupAdmin":true,
+    "createdById":526478,
+    "createdAt":21,
+    "lastModifiedById":96874,
+   "lastModifiedAt":"10/01/2018"
+},
+{
+    "userId":6587,
+    "adUserId":"string2",
+    "emailId": "user2@gmail.com",
+    "userName":"user2",
+    "mobileNumber":"6528962564",
+    "remark":"remark 2",
+    "active":false,
+    "userAdmin":true,
+    "groupAdmin":true,
+    "createdById":56984,
+    "createdAt":22,
+    "lastModifiedById":96238,
+   "lastModifiedAt":"02/01/2018"
+},
+
+{
+    "userId":2587,
+    "adUserId":"string3",
+    "emailId": "user3@gmail.com",
+    "userName":"user3",
+    "mobileNumber":"6552472564",
+    "remark":"remark 3",
+    "active":true,
+    "userAdmin":true,
+    "groupAdmin":false,
+    "createdById":6589,
+    "createdAt":32,
+    "lastModifiedById":93238,
+   "lastModifiedAt":"03/01/2018"
+}
+]

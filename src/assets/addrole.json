@@ -1,0 +1,149 @@
+[
+{
+"id":1,
+"reminderModule": "Contract",
+"groupname": "Finance",
+"module": "Equipment",
+"usergroup": "FMD-TS",
+"active": true,
+"discribtion":"dss sas",
+"role": {
+
+"User": [{
+        "view": true             
+        }]
+},
+"groupAdmin": [{
+}]
+},
+
+{
+"id":2,
+"reminderModule": "Contract",
+"groupname": "Finance",
+"module": "Equipment",
+"usergroup": "FMD-TS",
+"active": false,
+"role": {
+
+    "Administrator": [{
+             "view": true,
+              "Add":true,
+              "Update":true,
+              "Delete":true,
+              "Approve":true             
+            }]
+}
+
+},
+
+{
+"id":3,
+"reminderModule": "Staff",
+"groupname": "FMD-Operation",
+"module": "Equipment",
+"usergroup": "FMD-TS",
+"active": true,
+"role": {
+
+    "Administrator": [{
+             "view": true,
+              "Add":true,
+              "Update":true,
+              "Delete":true,
+              "Approve":true             
+            }]
+}
+
+},
+
+{
+"id":4,
+"reminderModule": "Staff",
+"groupname": "FMD-Operation",
+"module": "Equipment",
+"usergroup": "FMD-TS",
+"active": false,
+"role": {
+
+    "User": [{
+              "view": true,
+              "Add":true,
+              "Update":true
+                       
+            }]
+}
+
+},
+
+{
+"id":5,
+"reminderModule": "Equipment",
+"groupname": "FMD-Operation",
+"module": "Equipment",
+"usergroup": "FMD-TS",
+"active": true,
+"role": {
+
+    "Officer in Charge": [{
+             "view": true,
+              "Add":true,
+              "Update":true
+                       
+            }]
+}
+
+},
+
+{
+"id":6,
+"reminderModule": "Equipment",
+"groupname": "FMD-Operation",
+"module": "Equipment",
+"usergroup": "FMD-Operation",
+"active": true,
+"role": {
+
+    "Officer in Charge": [{
+             "view": true,
+              "Add":true,
+              "Update":true
+                       
+            }]
+}
+
+},
+{
+"id":7,
+"reminderModule": "Equipment",
+"groupname": "FMD-Operation",
+"module": "Equipment",
+"usergroup": "FMD-Operation",
+"active": false,
+"role": {
+
+    "Read only": [{
+             "Add":true                       
+            }]
+}
+
+},
+
+{
+"id":8,
+"reminderModule": "Equipment",
+"groupname": "FMD-Operation",
+"module": "Equipment",
+"usergroup": "FMD-Operation",
+"active": true,
+"role": {
+
+    "Read only": [{
+             "Add":true                       
+            }]
+}
+
+}
+
+
+]

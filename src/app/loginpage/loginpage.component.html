@@ -1,0 +1,59 @@
+<div class="hold-transition login_body">
+<div class="login-box">
+  	<div class="login-box-body">
+    <h2 class="login-wc-text">Welcome!</h2>
+    <form  [formGroup] = 'form'>
+      <div class="form-group has-feedback">
+        <input type="email" formControlName="username"  class="form-control" placeholder="USERNAME">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input formControlName="password" type="password" class="form-control" placeholder="* * * * * * * *">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">        
+       
+        <div class="col-xs-12 col-md-6 pull-left forgot-password">
+          <div class="popover-tip">
+            <span class="tooltip-close">x </span>
+          <h3 class="popover-title">Forgot Password?</h3>
+          <div class="popover-content">
+            Please contact helpdesk @ +65 6279 5459 or email: helpdesk_psa@globalpsa.com for help.
+            </div>
+            <div class="arrow-icn"></div>
+          </div>
+          <a  class="forgot-tooltip">Forgot Password? </a>
+        </div>
+        <div class="col-xs-12 col-md-4 pull-right text-center">
+          <button type="submit"  (click)="onLogin()" class="btn btn-login">Login</button>
+          <span class="glyphicon glyphicon-log-in form-control-login"></span>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+    <div class="line-img-left"><img [src] ="lineLeft" alt="lines-image"></div>
+    <div class="line-img-right"><img [src] ="lineRight" alt="lines-image"></div>
+  </div>
+  	<div class="login-box-footer">
+    	<div class="pull-left"><img [src] ="reminderLogo" alt="Reminder 365"></div>
+        <div class="pull-right m-t15">
+      <img [src] ="loginBottom" alt="Reminder 365"></div>
+    
+
+    </div>
+  
+  <!-- /.login-box-body -->
+  
+</div>
+
+<div class="login_body_overlay"><img [src] ="overlayImage" alt="overlay-image"></div>
+    <footer class="login-footer">
+      <div class="footer-warning">
+  <strong> WARNING : </strong>
+Access to information on this machine and network is restricted to authorised personnel only. Any unauthorised user 
+         is subject to criminal prosecution under the Computer Misuse Act (Cap. 50A).
+      </div>
+</footer>
+<!-- /.login-box -->
+
+</div>

@@ -1,0 +1,139 @@
+<div class="modal-backdrop ">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content form-ajust">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="closeModel($event)" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create User</h4>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12">
+          <div class="form-group form-align">
+
+
+            <label for="UserLogin">User ID<span class="mandatory">*</span></label>
+            <div class="input-group">
+
+              <input #input type="text" placeholder="Search User ID" class="form-control input-list" [(ngModel)]="query" (keyup)="filter($event)">
+              <span class="input-group-addon" (click)="showAll(input)"><i class="fa fa-download"></i></span>
+              <ul id="list-group" class="list-group group-list" *ngIf="filteredList.length > 0">
+              <li *ngFor="let item of filteredList" [class.active]="item.selected" [id]="item.selected" class="list-group-item item-list"
+                (click)="select(item)">
+                {{ item.userId }}
+                 
+              </li>
+              
+             
+            </ul>
+
+            </div>
+           
+            
+            
+          </div>
+        </div>
+        <form [formGroup]="userForm" (ngSubmit)="addUser($event, userForm.value)">
+          <div class="box-body">
+          
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <div class="form-group" [ngClass]="{'has-error':!userForm.controls['userName'].valid}">
+                    <label for="Username">User Name <span class="mandatory">*</span></label>
+
+                    <input type="text" class="form-control"
+                     name="username" 
+                     formControlName="userName" 
+                     placeholder="User name" [(ngModel)]="newUser.userName">
+                    <!--<p class="alert alert-danger" *ngIf="userForm.controls['userName'].hasError('minlength')">
+                      User name must be at least 4 characters long.
+                    </p>-->
+                    <!--<p class="alert alert-danger" *ngIf="userForm.controls['userName'].hasError('maxlength')">
+                      User name cannot exceed 25 characters.
+                    </p>-->
+                    <p class="alert alert-danger" *ngIf="userForm.controls['userName'].hasError('required') && userForm.controls['userName'].dirty">
+                      User name is required
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="form-group" [ngClass]="{'has-error':!userForm.controls['emailId'].valid}">
+                    <label for="EmailAddress">Email Address <span class="mandatory">*</span></label>
+                    <input type="email" class="form-control" 
+                    name="emailId" 
+                    formControlName="emailId" 
+                    placeholder="Enter valid email address" 
+                    [(ngModel)]="newUser.emailId">
+                    <p class="alert alert-danger" *ngIf="userForm.controls['emailId'].hasError('required') 
+                       && userForm.controls['emailId'].dirty">
+                      Email is required
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="mobileNumber">Phone Number</label>
+                  <input type="text" placeholder="+xx xxxx xxxx" 
+                  [(ngModel)]="newUser.mobileNumber"
+                  [textMask]="{mask:phoneFmt}" class="form-control" 
+                
+                  name="mobileNumber" autocomplete="off"
+                    formControlName="mobileNumber" numeric >
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="Remarks">Remarks</label>
+                  <textarea class="form-control" 
+                  name="remark" 
+                  formControlName="remark" 
+                  placeholder="Remarks" 
+                  [(ngModel)]="newUser.remark"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group radio-button">
+                  <label class="clearfix" for="Active">Active</label>
+                  <label class="radio-inline">
+                            <input class="form-check-input" type="radio" 
+                            name="active"  
+                            formControlName="active" 
+                            [(ngModel)]="active"> Yes
+                           </label>
+
+                  <label class="radio-inline">
+                            <input class="form-check-input" 
+                            formControlName="active" type="radio" 
+                            name="active"  
+                            [(ngModel)]="active"> No
+                           </label>
+                           
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-grey pull-left"  (click)="closeModel()">Cancel</button>
+            <button type="submit" class="btn btn-submit pull-right" [disabled] = "!userForm.valid"> Create user </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

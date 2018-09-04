@@ -1,0 +1,14 @@
+
+.modal-dialog {
+    width: 70%
+}
+.tab-content {
+    float: left;
+    width: 100%;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.form-ajust .form-control {
+    height: inherit
+}

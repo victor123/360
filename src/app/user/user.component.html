@@ -1,0 +1,132 @@
+<div class="box box-primary">
+
+  <div class="box-header with-border">
+    <!--<select [(ngModel)]="color">
+      <option [value]="null" disabled="true" [selected]="true" >-Select color-</option>
+      <option [value]="drop.option" *ngFor="let drop of selectList"> {{drop.option}} </option>
+    </select>
+    <div class="lop" style.background-color ="rgb({{color}})"> </div>-->
+    <h3 class="box-title">User Data</h3>
+
+    <div class="box-btn-group pull-right">
+      <button type="button" class="btn btn-add" (click)="showAddProductForm()">Add User</button>
+    </div>
+
+  </div>
+  <div class="box-table-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="dataTables_length">
+          Show
+          <select [(ngModel)]="limit" class="form-control input-sm">
+          <option *ngFor="let size of sizes" [value]= "size" >{{size}}</option>
+         </select> entries </div>
+      </div>
+
+
+      <div class="col-sm-6">
+        <div id="userdata_filter" class="dataTables_filter">
+          <label>Search:
+            <input type="search"
+            class="form-control input-sm"
+            [(ngModel)]="term"
+            placeholder="Search here">
+            </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content">
+    <table class="sorticon table datatable dataTable no-footer">
+      <thead>
+        <tr>
+          <th [class.active]="order ==='userId'" (click)="setOrder('userId')"> User ID
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='username'" (click)="setOrder('username')"> User Name
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='emailId'" (click)="setOrder('emailId')"> Email
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='mobileNumber'" (click)="setOrder('mobileNumber')"> Phone Number
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='userAdmin'" (click)="setOrder('userAdmin')">User Admin
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='groupAdmin'" (click)="setOrder('groupAdmin')">Group Admin
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+
+
+          <th [class.active]="order ==='remark'" (click)="setOrder('remark')"> Remarks
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='createdById'" (click)="setOrder('createdById')"> Created By
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='createdAt'" (click)="setOrder('createdAt')"> Created Date
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='lastModifiedById'" (click)="setOrder('lastModifiedById')"> Last Modified
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th [class.active]="order ==='lastModifiedAt'" (click)="setOrder('lastModifiedAt')"> Last Modified Date
+            <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+          </th>
+          <th class="actionBtn"> Action </th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let user of UserList |
+                  filterBy:term |
+                  orderBy:order:reverse:'case-insensitive'|
+                  
+      paginate:{
+                itemsPerPage:limit, 
+                currentPage:p,
+                totalItems:total} ; let i = index">
+          <td> {{user.userId}}</td>
+          <td> {{user.userName}}</td>
+          <td> {{user.emailId}}</td>
+          <td> {{user.mobileNumber}}</td>
+          <td> {{user.userAdmin }}</td>
+          <td> {{user.groupAdmin }}</td>
+          <td> {{user.remark}}</td>
+          <td> {{user.createdById}} </td>
+          <td> {{user.createdAt}}</td>
+          <td> {{user.lastModifiedById}}</td>
+          <td> {{user.lastModifiedAt}}</td>
+          <td>
+
+
+            <div class="action-btn action">
+              <a (click)="view(user)"><i class="fa fa-eye"></i></a>
+              <a (click)="loadUserToEdit(user)"><i class="fa fa-edit"></i></a>
+            </div>
+          </td>
+
+        </tr>
+        <tr *ngIf="(UserList | filterBy:term).length == 0">
+          <td colspan="12">
+           {{statusMessage}}
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+
+
+  <div *ngIf="productForm">
+<app-createuser (createViewClose)="closeModel($event)" (submitClose)="submitclose($event)"> </app-createuser>
+</div>
+<div class="" *ngIf="editProductForm">
+  <app-edituser [editUser]="editUser"  (UpdateUserClose)="updateCloser($event)"  (editeventClose)="editclose($event)"> </app-edituser>
+</div>
+<div *ngIf="viewUser">
+  <app-viewuser [childData]="childData" (closeview)="closePop($event)"> </app-viewuser>
+</div>

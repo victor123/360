@@ -1,0 +1,7 @@
+.box-body {
+    max-height: inherit
+}
+
+.tab-content-body .box {
+    border-color:inherit;
+}
